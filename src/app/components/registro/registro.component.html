@@ -1,0 +1,61 @@
+<!-- Full Screen Modal -->
+<div class="col-12 mb-3 mt-3">
+    <button type="button" class="btn btn-primary" (click)="abrirModal()">
+        Nuevo registro
+      </button>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="outer-wrapper">
+                        <div class="table-wrapper">
+                            <table class="table datatable w-100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">ITEM</th>
+                                        <th scope="col">FECHA</th>
+                                        <th scope="col">HRA ENTRA.</th>
+                                        <th scope="col">VISITANTE</th>
+                                        <th scope="col">TIP. PERSONA</th>
+                                        <th scope="col">NRO DOCUMENTO</th>
+                                        <th scope="col">INSTITUCION</th>
+                                        <th scope="col">MOT. VISITA</th>
+                                        <th scope="col">EMP. PUBLICO</th>
+                                        <th scope="col">OFICINA</th>
+                                        <th scope="col">HRA SALIDA</th>
+                                        <th scope="col">OPCIONES</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let registro of dataRegistro;let i = index">
+                                        <th scope="row">{{i+1}}</th>
+                                        <td>{{registro.fecha | date: 'd/M/yyyy'}}</td>
+                                        <td>{{registro.h_ingreso}}</td>
+                                        <td>{{registro.visitante}}</td>
+                                        <td>{{registro.tipo_persona}}</td>
+                                        <td>{{registro.tipo_doc}}</td>
+                                        <td>{{registro.institucion}}</td>
+                                        <td>{{registro.mot_visita}}</td>
+                                        <td>{{registro.emp_publico}}</td>
+                                        <td>{{registro.of_visitada}}</td>
+                                        <td>{{registro.h_salida}}</td>
+                                        <td>
+                                            <button type="button" [disabled]="!registro.btnCheck" class="btn btn-success" *ngIf="registro.btnCheck"><i class="bi bi-check-circle"></i></button>
+                                            <button type="button" class="btn btn-primary" *ngIf="registro.btnSalida" (click)="actualizarHraSalida(registro)"><i class="bi bi-clock-fill"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr class="text-center" *ngIf="mostrarTrRegistro">
+                                        <td class="text-center" colspan="12">{{mensajeRespuesta}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
